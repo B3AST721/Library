@@ -16,6 +16,7 @@ function addBooks(name, author, page) {
 
 const displayTheBooks = () => {
   myLibrary.forEach((book) => {
+    const cardContainer = document.querySelector('.card-container')
     const card = document.createElement('div');
     const nameDisplay = document.createElement('div');
     const authorDisplay = document.createElement('div');
@@ -26,14 +27,34 @@ const displayTheBooks = () => {
     authorDisplay.innerHTML = 'Author: ' + book.author;
     pageDisplay.innerHTML = 'Page: ' + book.page;
 
-    document.body.appendChild(card)
+    cardContainer.appendChild(card)
     card.appendChild(nameDisplay);
     card.appendChild(authorDisplay);
     card.appendChild(pageDisplay);
   })
 }
 
-addBooks('Trial', 'Trial', 54)
+//Popup form
+document.querySelector('.popup-button').addEventListener('click', () => {
+  document.querySelector('.popup').style.display = 'flex';
+})
+
+//Button that adds books.
+const nameInput = document.getElementById('input-name');
+const authorInput = document.getElementById('input-author');
+const pageInput = document.getElementById('input-page');
+const formButton = document.getElementById('form');
+
+formButton.addEventListener('submit', (e) => {
+  
+  document.querySelector('.popup').style.display = 'none';
+})
+
+
+addBooks('Diary of a Wimpy Kid', 'Hansel Warrior', 542)
 addBooks('hw', 'hw', 20)
+addBooks('hw', 'hw', 20)
+addBooks('hw', 'hw', 20)
+
 
 displayTheBooks()
